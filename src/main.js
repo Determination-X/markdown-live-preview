@@ -4,6 +4,8 @@ import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import mermaid from 'mermaid';
 
+const MARKED_KATEX_EXTENSION_URL =
+    'https://cdn.jsdelivr.net/npm/marked-katex-extension@5.1.4/+esm';
 const init = () => {
     let hasEdited = false;
     let scrollBarSync = false;
@@ -651,6 +653,22 @@ This web site is using ${"`"}markedjs/marked${"`"}.
     initThemeToggle(themeSettings);
 
     setupDivider();
+
+    // Load KaTeX extension for mathematical expressions
+    import(MARKED_KATEX_EXTENSION_URL)
+        .then(({ default: markedKatex }) => {
+            marked.use(markedKatex({
+                throwOnError: false,
+            }));
+
+            convert(editor.getValue());
+        })
+        .catch((error) => {
+            console.warn(
+                'Failed to load KaTeX extension; continuing without math rendering.',
+                error
+            );
+        });
 };
 
 window.addEventListener("load", () => {

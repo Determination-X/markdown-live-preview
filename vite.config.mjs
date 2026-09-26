@@ -15,5 +15,10 @@ export default {
                 }
             });
         }
-    }]
+    }],
+    preview: {
+        allowedHosts: [
+            '.trycloudflare.com'
+        ]
+    },
 };

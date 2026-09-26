@@ -358,3 +358,12 @@ footer {
 [data-theme="dark"] footer {
   background-color: #333;
 }
+#output .katex-display {
+    overflow-x: auto;
+    padding: 0.4em 0.2em;
+    line-height: 1.4;
+}
+
+#output .katex {
+    line-height: 1.3;
+}
