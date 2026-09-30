@@ -2,7 +2,7 @@ import { resolve } from 'node:path';
 import { cssFiles, updateCssVersions } from './scripts/update-css-version.mjs';
 
 export default {
-    base: '/markdown-live-preview/',
+    base: '/mdlp/',
     plugins: [{
         name: 'update-css-versions',
         buildStart() {
